@@ -31,13 +31,7 @@
                 "output": "./svg"
               }
             ],
-            "styles": [
-              "./node_modules/@swimlane/ngx-datatable/index.css",
-            "./node_modules/@swimlane/ngx-datatable/themes/material.css",
-            "./node_modules/@swimlane/ngx-datatable/assets/icons.css",
-              "src/theme/variables.scss",
-               "src/global.scss"
-          ],
+            "styles": ["src/theme/variables.scss", "src/global.scss"],
             "scripts": []
           },
           "configurations": {
@@ -117,9 +111,7 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["./node_modules/@swimlane/ngx-datatable/index.css",
-            "./node_modules/@swimlane/ngx-datatable/themes/material.css",
-            "./node_modules/@swimlane/ngx-datatable/assets/icons.css","src/theme/variables.scss", "src/global.scss"],
+            "styles": ["src/theme/variables.scss", "src/global.scss"],
             "scripts": []
           },
           "configurations": {
@@ -145,7 +137,7 @@
     "schematicCollections": [
       "@ionic/angular-toolkit"
     ],
-    "analytics": "392430c9-95bb-4d65-9b10-85f676d64b1f"
+    "analytics": "520528bf-85f2-47a9-8728-a0783f1ceffd"
   },
   "schematics": {
     "@ionic/angular-toolkit:component": {
