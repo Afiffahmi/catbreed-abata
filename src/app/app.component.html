@@ -1,0 +1,30 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu contentId="main-content" type="overlay">
+      <ion-content>
+        <ion-list id="inbox-list">
+          <ion-img src="../assets/images/logo.png" alt="Cat Breed List"></ion-img>
+          
+          
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item routerDirection="root" [routerLink]="[p.url]" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon aria-hidden="true" slot="start" [ios]="p.icon" [md]="p.icon"></ion-icon>
+              <ion-label>{{ p.title }}</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <ion-list id="labels-list">
+          <ion-list-header>User</ion-list-header>
+          <ion-item>
+            <ion-avatar slot="start">
+              <img alt="Silhouette of a person's head" src="https://www.realmenrealstyle.com/wp-content/uploads/2023/07/Glasses-for-Oval-shape.jpg" />
+            </ion-avatar>
+            <ion-label>Afif Fahmi</ion-label>
+          </ion-item>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

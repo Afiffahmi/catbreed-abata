@@ -1,0 +1,54 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Cat Listing</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="ion-padding">
+    <ion-item>
+      <ion-label>Search</ion-label>
+      <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged()"></ion-searchbar>
+    </ion-item>
+
+    <ion-grid>
+      <ion-row>
+        <ion-col size="12" size-md="3" *ngFor="let item of cats | slice:0:endIndex">
+          <ion-card color="dark">
+            <img alt="Silhouette of mountains" src="https://catinaflat.blog/wp-content/uploads/2023/09/cat-scratching-furniture.jpg" />
+            <ion-card-header>
+              <ion-card-title><strong>{{item.breed}}</strong></ion-card-title>
+              <ion-card-subtitle> <ion-chip color="primary">{{item.country}}</ion-chip></ion-card-subtitle>
+             
+            </ion-card-header>
+            <ion-card-content>
+              <p><strong>Origin:</strong> {{item.origin}}</p>
+              <p><strong>Coat:</strong> {{item.coat}}</p>
+              <p><strong>Pattern:</strong> {{item.pattern}}</p>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+
+
+    </div>
+
+
+
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="prevPage()" [disabled]="currentPage === 1">Previous</ion-button>
+    </ion-buttons>
+    <ion-title>Page {{currentPage}} of {{totalPages}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
