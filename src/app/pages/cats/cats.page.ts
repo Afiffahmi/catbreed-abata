@@ -9,6 +9,7 @@ interface Cat {
   origin: string;
   coat: string;
   pattern: string;
+  [key: string]: any; 
 }
 
 @Component({
@@ -25,7 +26,10 @@ export class CatsPage implements OnInit {
   public pageSize = 25;
   public endIndex = this.pageSize;
   public totalPages = 4;
-  currentView = 'card'; // or 'table'
+  public currentView = 'card';
+  public sortColumn = '';
+  public sortDirection = '';
+
 
  constructor(private catService: CatService, private loadingCtrl : LoadingController) {
  }
@@ -72,6 +76,27 @@ export class CatsPage implements OnInit {
         this.currentPage++;
         this.loadCats(this.currentPage);
       }
+    }
+
+    sort(column: string) {
+      if (this.sortColumn === column) {
+        // If we're already sorting on this column, reverse the sort direction
+        this.sortDirection = this.sortDirection === 'asc' ? 'desc' : 'asc';
+      } else {
+        // If we're not already sorting on this column, sort in ascending order
+        this.sortColumn = column;
+        this.sortDirection = 'asc';
+      }
+    
+      this.cats.sort((a, b) => {
+        if (a[this.sortColumn] < b[this.sortColumn]) {
+          return this.sortDirection === 'asc' ? -1 : 1;
+        }
+        if (a[this.sortColumn] > b[this.sortColumn]) {
+          return this.sortDirection === 'asc' ? 1 : -1;
+        }
+        return 0;
+      });
     }
   
     prevPage() {

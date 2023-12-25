@@ -2,19 +2,18 @@
   <ion-toolbar>
     <ion-title>Cat Listing</ion-title>
     <ion-buttons slot="end">
-      <ion-button (click)="changeView('card')">Card View</ion-button>
-      <ion-button (click)="changeView('table')">Table View</ion-button>
+      <ion-button (click)="changeView('card')"><ion-icon slot="start" name="grid-outline"></ion-icon></ion-button>
+      <ion-button (click)="changeView('table')"><ion-icon slot="start" name="list-outline"></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
+    <ion-searchbar animated="true" placeholder="Search by Cat breed, Origin, Coat, Pattern" [(ngModel)]="searchTerm" (ionChange)="searchChanged()"></ion-searchbar>
+
   <div class="ion-padding">
-    <ion-item>
-      <ion-label>Search</ion-label>
-      <ion-searchbar [(ngModel)]="searchTerm" (ionChange)="searchChanged()"></ion-searchbar>
-    </ion-item>
+    
 
     <div *ngIf="currentView ==='card'">
     <ion-grid>
@@ -39,20 +38,20 @@
   </div>
 
   <div *ngIf="currentView === 'table'">
-    <ion-grid>
-      <ion-row class="header-row">
+    <ion-grid class="custom-table">
+      <ion-row class="table-header">
         <ion-col class="header-cell">Breed</ion-col>
         <ion-col class="header-cell">Country</ion-col>
         <ion-col class="header-cell">Origin</ion-col>
         <ion-col class="header-cell">Coat</ion-col>
         <ion-col class="header-cell">Pattern</ion-col>
       </ion-row>
-      <ion-row *ngFor="let item of cats | slice:0:endIndex">
-        <ion-col>{{item.breed}}</ion-col>
-        <ion-col>{{item.country}}</ion-col>
-        <ion-col>{{item.origin}}</ion-col>
-        <ion-col>{{item.coat}}</ion-col>
-        <ion-col>{{item.pattern}}</ion-col>
+      <ion-row class="table-row" *ngFor="let item of cats | slice:0:endIndex">
+        <ion-col  (click)="sort('breed')" data-label="Breed">{{item.breed}}</ion-col>
+        <ion-col (click)="sort('country')" data-label="Country">{{item.country}}</ion-col>
+        <ion-col (click)="sort('origin')" data-label="Origin">{{item.origin}}</ion-col>
+        <ion-col (click)="sort('coat')" data-label="Coat">{{item.coat}}</ion-col>
+        <ion-col (click)="sort('pattern')" data-label="Pattern">{{item.pattern}}</ion-col>
       </ion-row>
     </ion-grid>
   </div>
