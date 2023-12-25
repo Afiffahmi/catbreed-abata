@@ -25,7 +25,7 @@ export class CatsPage implements OnInit {
   public pageSize = 25;
   public endIndex = this.pageSize;
   public totalPages = 4;
-
+  currentView = 'card'; // or 'table'
 
  constructor(private catService: CatService, private loadingCtrl : LoadingController) {
  }
@@ -61,6 +61,10 @@ export class CatsPage implements OnInit {
         cat.coat.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
         cat.pattern.toLowerCase().includes(this.searchTerm.toLowerCase())
       );
+    }
+
+    changeView(view: string) {
+      this.currentView = view;
     }
 
     nextPage() {
