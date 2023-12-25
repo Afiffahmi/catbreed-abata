@@ -42,7 +42,7 @@ export class CatsPage implements OnInit {
     async loadCats(page : number) {
 
             const loading = await this.loadingCtrl.create({
-              message: 'Hellooo',
+              message: 'Meowing...',
               spinner: 'bubbles'
             });
 
